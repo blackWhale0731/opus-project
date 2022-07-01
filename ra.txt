@@ -3,3 +3,4 @@ git clone https://github.com/blackWhale0731/opus-project.git
 명령어 입력하시면 됩니다.
 
 브랜치 생성하기 
+git branch 각자브랜치이름
