@@ -1,0 +1,3 @@
+깃허브에 로컬 폴더 연결하기 
+git clone https://github.com/blackWhale0731/opus-project.git
+명령어 입력
