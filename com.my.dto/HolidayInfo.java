@@ -4,6 +4,9 @@ public class HolidayInfo {
 	private int employeeId;
 	private int holidayTotal;
 	private int holidayUsing;
+	
+	
+	
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -22,5 +25,7 @@ public class HolidayInfo {
 	public void setHolidayUsing(int holidayUsing) {
 		this.holidayUsing = holidayUsing;
 	}
+
+	
 	
 }

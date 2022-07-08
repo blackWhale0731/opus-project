@@ -1,24 +1,18 @@
 package com.my.dto;
 
 public class ApprovalLevel {
-	private int employeeId;
+	private Employee employee;
 
-	public int getEmployeeId() {
-		return employeeId;
+	public ApprovalLevel() {
+		
+	} 
+	
+	public Employee getEmployee() {
+		return employee;
 	}
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
-
-	public ApprovalLevel(int employeeId) {
-		super();
-		this.employeeId = employeeId;
-	}
-
-	@Override
-	public String toString() {
-		return "ApprovalLevel [employeeId=" + employeeId + "]";
-	}
-
+		
 }
