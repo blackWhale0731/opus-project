@@ -16,34 +16,54 @@ public class Employee {
 	private Date employeeBirthday;
 	private int employeeResign;
 	private int employeeAuthority;
+	
 	private Department department;
 	//private List<Department> department;
 	
 	private HolidayInfo holidayInfo;
 	
-
-//	public Employee(int employeeId, String employeePassword, String employeeNameKr, String employeeNameEng, 
-//			Date employeeHiredate, int employeePhonenumber, String employeeEmail,
-//			String employeeAddress, String employeeGender, Date employeeBirthday, int employeeResign,
-//			int employeeAuthority, int departmentId) {
-//		this.employeePassword = employeePassword;
-//		this.employeeNameKr = employeeNameKr;
-//		this.employeeNameEng = employeeNameEng;
-//		this.employeeHiredate = employeeHiredate;
-//		this.employeePhonenumber = employeePhonenumber;
-//		this.employeeEmail = employeeEmail;
-//		this.employeeAddress = employeeAddress;
-//		this.employeeGender = employeeGender;
-//		this.employeeBirthday = employeeBirthday;
-//		this.employeeBirthday = employeeBirthday;
-//		this.employeeResign = employeeResign;
-//		this.employeeResign = employeeResign;
-//		Department.departmentId = departmentId;
-//	}
-	
 	public Employee() {
 		
 	}
+
+
+	public Employee(int employeeId, String employeePassword, String employeeNameKr, String employeeNameEng,
+			Date employeeHiredate, int employeePhonenumber, String employeeEmail, String employeeAddress,
+			String employeeGender, Date employeeBirthday, Department department) {
+		super();
+		this.employeeId = employeeId;
+		this.employeePassword = employeePassword;
+		this.employeeNameKr = employeeNameKr;
+		this.employeeNameEng = employeeNameEng;
+		this.employeeHiredate = employeeHiredate;
+		this.employeePhonenumber = employeePhonenumber;
+		this.employeeEmail = employeeEmail;
+		this.employeeAddress = employeeAddress;
+		this.employeeGender = employeeGender;
+		this.employeeBirthday = employeeBirthday;
+		this.department = department;
+	}
+
+	public Employee(int employeeId, String employeePassword, String employeeNameKr, String employeeNameEng,
+			Date employeeHiredate, int employeePhonenumber, String employeeEmail, String employeeAddress,
+			String employeeGender, Date employeeBirthday, int employeeResign, int employeeAuthority,
+			Department department) {
+		super();
+		this.employeeId = employeeId;
+		this.employeePassword = employeePassword;
+		this.employeeNameKr = employeeNameKr;
+		this.employeeNameEng = employeeNameEng;
+		this.employeeHiredate = employeeHiredate;
+		this.employeePhonenumber = employeePhonenumber;
+		this.employeeEmail = employeeEmail;
+		this.employeeAddress = employeeAddress;
+		this.employeeGender = employeeGender;
+		this.employeeBirthday = employeeBirthday;
+		this.employeeResign = employeeResign;
+		this.employeeAuthority = employeeAuthority;
+		this.department = department;
+	}
+
 
 	public int getEmployeeId() {
 		return employeeId;
@@ -156,6 +176,7 @@ public class Employee {
 	public void setHolidayInfo(HolidayInfo holidayInfo) {
 		this.holidayInfo = holidayInfo;
 	}
+
 
 
 	

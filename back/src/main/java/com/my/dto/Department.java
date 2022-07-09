@@ -8,6 +8,14 @@ public class Department {
 		
 	}
 
+	
+	public Department(int departmentId, String departmentName) {
+		super();
+		this.departmentId = departmentId;
+		this.departmentName = departmentName;
+	}
+
+
 	public int getDepartmentId() {
 		return departmentId;
 	}
