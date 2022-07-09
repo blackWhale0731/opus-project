@@ -9,17 +9,37 @@ public class Employee {
 	private String employeeNameKr;
 	private String employeeNameEng;
 	private Date employeeHiredate;
-	private String employeePhonenumber;
+	private int employeePhonenumber;
 	private String employeeEmail;
 	private String employeeAddress;
-	private char employeeGender;
+	private String employeeGender;
 	private Date employeeBirthday;
 	private int employeeResign;
-	
+	private int employeeAuthority;
 	private Department department;
 	//private List<Department> department;
 	
 	private HolidayInfo holidayInfo;
+	
+
+//	public Employee(int employeeId, String employeePassword, String employeeNameKr, String employeeNameEng, 
+//			Date employeeHiredate, int employeePhonenumber, String employeeEmail,
+//			String employeeAddress, String employeeGender, Date employeeBirthday, int employeeResign,
+//			int employeeAuthority, int departmentId) {
+//		this.employeePassword = employeePassword;
+//		this.employeeNameKr = employeeNameKr;
+//		this.employeeNameEng = employeeNameEng;
+//		this.employeeHiredate = employeeHiredate;
+//		this.employeePhonenumber = employeePhonenumber;
+//		this.employeeEmail = employeeEmail;
+//		this.employeeAddress = employeeAddress;
+//		this.employeeGender = employeeGender;
+//		this.employeeBirthday = employeeBirthday;
+//		this.employeeBirthday = employeeBirthday;
+//		this.employeeResign = employeeResign;
+//		this.employeeResign = employeeResign;
+//		Department.departmentId = departmentId;
+//	}
 	
 	public Employee() {
 		
@@ -65,11 +85,11 @@ public class Employee {
 		this.employeeHiredate = employeeHiredate;
 	}
 
-	public String getEmployeePhonenumber() {
+	public int getEmployeePhonenumber() {
 		return employeePhonenumber;
 	}
 
-	public void setEmployeePhonenumber(String employeePhonenumber) {
+	public void setEmployeePhonenumber(int employeePhonenumber) {
 		this.employeePhonenumber = employeePhonenumber;
 	}
 
@@ -89,11 +109,11 @@ public class Employee {
 		this.employeeAddress = employeeAddress;
 	}
 
-	public char getEmployeeGender() {
+	public String getEmployeeGender() {
 		return employeeGender;
 	}
 
-	public void setEmployeeGender(char employeeGender) {
+	public void setEmployeeGender(String employeeGender) {
 		this.employeeGender = employeeGender;
 	}
 
@@ -113,6 +133,14 @@ public class Employee {
 		this.employeeResign = employeeResign;
 	}
 
+	public int getEmployeeAuthority() {
+		return employeeAuthority;
+	}
+
+	public void setEmployeeAuthority(int employeeAuthority) {
+		this.employeeAuthority = employeeAuthority;
+	}
+
 	public Department getDepartment() {
 		return department;
 	}
@@ -128,8 +156,8 @@ public class Employee {
 	public void setHolidayInfo(HolidayInfo holidayInfo) {
 		this.holidayInfo = holidayInfo;
 	}
-	
-	
+
+
 	
 	
 }
