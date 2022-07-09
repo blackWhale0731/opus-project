@@ -34,7 +34,7 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 				String employeeAddress = rs.getString("employee_address");
 				String employeeGender = rs.getString("employee_gender");
 				java.sql.Date employeeBirthday = rs.getDate("employee_birthday"); // util?? MyWeb의
-																					// ProductOracleRepository 참조
+																				  //ProductOracleRepository 참조
 				int employeeResign = rs.getInt("employee_resign");
 				int employeeAuthority = rs.getInt("employee_authority");
 
@@ -75,6 +75,8 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 
 			e.printStackTrace();
 
+		}finally {
+			MyConnection.close(rs, pstmt, con);
 		}
 	}
 
