@@ -25,6 +25,17 @@ public class Employee {
 	public Employee() {
 		
 	}
+	
+	public Employee(int employeeId) {
+		super();
+		this.employeeId = employeeId;
+	}
+
+	public Employee(int employeeId, String employeeNameKr) {
+		super();
+		this.employeeId = employeeId;
+		this.employeeNameKr = employeeNameKr;
+	}
 
 
 	public Employee(int employeeId, String employeePassword, String employeeNameKr, String employeeNameEng,
