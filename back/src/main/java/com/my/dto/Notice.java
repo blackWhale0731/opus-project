@@ -9,6 +9,8 @@ public class Notice {
 	private Date noticeTime;	//java.util.date 권장
 	private Employee employee;
 	
+	
+	public Notice() {}
 		
 	public Notice(int noticeId, int employeeId, String noticeCnt, 
 			String noticeTitle, Date noticeTime, Employee employee) {
