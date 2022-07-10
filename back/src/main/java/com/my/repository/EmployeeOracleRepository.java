@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 import com.my.dto.Department;
 import com.my.dto.Employee;
@@ -19,10 +18,11 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String selectByIdAndPwdSQL = "SELECT * FROM employee WHERE employee_id= ? AND employee_password= ?";
+		String selectSQL = "SELECT * FROM employee WHERE employee_id= ? AND employee_password= ?";
+		
 		try {
 			con = MyConnection.getConnection();
-			pstmt = con.prepareStatement(selectByIdAndPwdSQL);
+			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
@@ -33,8 +33,7 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 				String employeeEmail = rs.getString("employee_email");
 				String employeeAddress = rs.getString("employee_address");
 				String employeeGender = rs.getString("employee_gender");
-				java.sql.Date employeeBirthday = rs.getDate("employee_birthday"); // util?? MyWeb의
-																				  //ProductOracleRepository 참조
+				java.sql.Date employeeBirthday = rs.getDate("employee_birthday"); // util?? MyWeb의ProductOracleRepository 참조
 				int employeeResign = rs.getInt("employee_resign");
 				int employeeAuthority = rs.getInt("employee_authority");
 
@@ -48,11 +47,12 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 
 				return em;
 			} else {
-				throw new SelectException();
+				throw new SelectException("사번 혹은 비밀번호가 일치하지 않습니다");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new SelectException();
+			throw new SelectException(e.getMessage());
+			
 		} finally {
 			MyConnection.close(rs, pstmt, con);
 		}
@@ -72,9 +72,8 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 			pstmt.setString(1, employee.getEmployeePassword());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-
+			throw new UpdateException("비밀번호는 최소  6자리 이상이어야합니다");
 		}finally {
 			MyConnection.close(rs, pstmt, con);
 		}
@@ -86,14 +85,14 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String selectMyPageSQL = "SELECT e.employee_name_kr, e.employee_name_eng, e.employee_birthday, "
+		String selectSQL = "SELECT e.employee_name_kr, e.employee_name_eng, e.employee_birthday, "
 				+ "e.employee_gender, e.employee_address, e.employee_id, e.employee_password, d.department_name, "
 				+ "e.employee_phonenumber, e.employee_hiredate, e.employee_email \r\n"
 				+ "FROM employee e JOIN department d ON e.department_id=d.department_id\r\n"
 				+ "WHERE e.employee_id = ?";
 		try {
 			con = MyConnection.getConnection();
-			pstmt = con.prepareStatement(selectMyPageSQL);
+			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				String employeeNameKr = rs.getString("employee_naame_kr");
@@ -123,6 +122,7 @@ public class EmployeeOracleRepository implements EmployeeRepository {
 			throw new SelectException();
 		} finally {
 			MyConnection.close(rs, pstmt, con);
+			//throws 처리
 		}
 
 	}
