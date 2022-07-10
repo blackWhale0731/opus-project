@@ -20,18 +20,19 @@ public class NoticeOracleRepository implements NoticeRepository {
 		List<Notice> notices = new ArrayList<Notice>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-	    	ResultSet rs = null;
+	    ResultSet rs = null;
 
 	    String selectSQL = "select * from notice n\r\n"
 	    		+ "join employee e on (e.employee_id = n.employee_id)\r\n"
 	    		+ "where rownum between ? AND ? ";
+	    		// sql 보류
 		
 	    try { 
 				con = MyConnection.getConnection();	
 				pstmt = con.prepareStatement(selectSQL);
-				pstmt.setInt(1, startRow);
-				pstmt.setInt(2, endRow);
-				rs = pstmt.executeQuery();
+			        pstmt.setInt(1, startRow);
+			        pstmt.setInt(2, endRow);
+			        rs = pstmt.executeQuery();
 			    
 				while(rs.next()== true)  {
 					Notice notice = new Notice();
@@ -64,7 +65,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 		List<Notice> notices = new ArrayList<Notice>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-	   	ResultSet rs = null;
+	    	ResultSet rs = null;
 
 	    String selectSQL = "SELECT * FROM(\r\n"
 	    		+ "    SELECT rownum as rn, n.notice_id, n.notice_title,n.notice_time,e.employee_name_kr\r\n"
@@ -80,7 +81,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 			    pstmt.setInt(1, startRow);
 			    pstmt.setInt(2, endRow);
 			    pstmt.setString(3, noticeTitle);
-			    pstmt.executeQuery();
+			    rs = pstmt.executeQuery();
 			    
 			    while(rs.next())  {
 					Notice notice = new Notice();
@@ -111,31 +112,28 @@ public class NoticeOracleRepository implements NoticeRepository {
 		PreparedStatement pstmt = null;
 	    	ResultSet rs = null;
 	    
-	    String selectSQL = "SELECT *\r\n"
-	    		+ "FROM (\r\n"
-	    		+ "    SELECT rownum as rn, a.*\r\n"
-	    		+ "    FROM(   \r\n"
-	    		+ "        SELECT n.notice_id, n.notice_title, e.employee_id, n.notice_time\r\n"
-	    		+ "        FROM notice n JOIN employee e ON (n.employee_id=e.employee_id) \r\n"
-	    		+ "        ORDER BY notice_time DESC\r\n"
-	    		+ "    ) a\r\n"
-	    		+ ")\r\n"
-	    		+ "WHERE rn BETWEEN ? AND ? ";
+	    String selectSQL = "SELECT notice_title, employee_name_kr, notice_time, notice_cnt\r\n"
+	    		+ "FROM notice n JOIN employee e ON (n.employee_id = e.employee_id)\r\n"
+	    		+ "WHERE notice_id = ? ;\r\n"
+	    		+ "";
 
 		try { 
 			    con = MyConnection.getConnection();
 			    pstmt = con.prepareStatement(selectSQL);
 			    pstmt.setInt(1, noticeId);
-			    pstmt.executeQuery();
+			    rs = pstmt.executeQuery();
 			    
 			    if (rs.next()) {
 //					int noticeId = rs.getInt("notice_id");
-					int employeeId = rs.getInt("employee_id");
 					String noticeCnt = rs.getString("notice_cnt");
 					String noticeTitle = rs.getString("notice_title");
 					java.sql.Date noticeTime = rs.getDate("notice_time");
-			    
-			    Notice n = new Notice(noticeId, employeeId, noticeCnt, noticeTitle, noticeTime);
+					String employeeNameKr = rs.getString("employee_name_kr");
+					int employeeId =  rs.getInt("employee_id");
+					Employee employee = new Employee(employeeId, employeeNameKr);
+					
+					
+			    Notice n = new Notice(noticeId, noticeCnt, noticeTitle, noticeTime, employee);
 			
 					
 				return n;
