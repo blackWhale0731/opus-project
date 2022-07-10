@@ -24,12 +24,12 @@ public interface CalendarRepository {
 	 * @return
 	 * @throws SelectException
 	 */
-	public List<Calendar> SelectCalByEmployeeId(Date Month, int employeeId, int MonthButton) throws SelectException;
+	public List<Calendar> selectCalByEmployeeId(Date Month, int employeeId, int MonthButton) throws SelectException;
 	
 	/**
 	 * 로그인한 사원과 같은 부서 사원들의 공개체크된 달력정보를 반환한다
 	 * @return
 	 * @throws SelectException
 	 */
-	public List<Calendar> SelectCalByDepartmentId(Date Month, int employeeId,int MonthButton) throws SelectException;
+	public List<Calendar> selectCalByDepartmentId(Date Month, int employeeId,int MonthButton) throws SelectException;
 }
