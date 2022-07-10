@@ -31,6 +31,9 @@ public class CaltypeOracleRepository implements CaltypeRepository {
 			if(rs.next()) {
 				int calType = rs.getInt("cal_type");
 				String calTypeName = rs.getString("cal_type_name");
+				
+				CalType ct = new CalType(calType, calTypeName);	
+				caltype.add(ct);
 			}
 		} catch (SQLException e) {
 			throw new SelectException();
