@@ -24,6 +24,9 @@ public class CalendarOracleRepository implements CalendarRepository {
 		try {
 			con = MyConnection.getConnection();
 			String insertSQL = "INSERT INTO calendar(cal_no, employee_id, cal_type, cal_revealed, cal_cnt, cal_start, cal_end) values(seq_cal_no.NEXTVAL ,?,?,?,?,?,?)";
+			int rowcnt = pstmt.executeUpdate(insertSQL);
+			System.out.println(rowcnt+"건이 추가되었습니다");
+			
 		pstmt = con.prepareStatement(insertSQL);
 		pstmt.setInt(1, calendar.getCalNo());
 		pstmt.setInt(2, calendar.getEmployee().getEmployeeId());
@@ -32,7 +35,6 @@ public class CalendarOracleRepository implements CalendarRepository {
 		pstmt.setString(5, calendar.getCalCnt());
 		pstmt.setDate(6, new java.sql.Date(calendar.getCalStart().getTime()));
 		pstmt.setDate(7, new java.sql.Date(calendar.getCalEnd().getTime()));
-		pstmt.executeUpdate();
 		
 		} catch (SQLException e) {
 			throw new InsertException(e.getMessage());
@@ -45,7 +47,7 @@ public class CalendarOracleRepository implements CalendarRepository {
 	}
 
 	@Override
-	public List<Calendar> selectCalByEmployeeId(Calendar calendar) throws SelectException {
+	public List<Calendar> selectCalByEmployeeId(Date Month, int employeeId, int MonthButton) throws SelectException {
 			
 		List<Calendar> calendars = new ArrayList<Calendar>();
 		Connection con = null;
@@ -59,14 +61,10 @@ public class CalendarOracleRepository implements CalendarRepository {
 					+ "AND (TO_CHAR(add_months(?, ?), 'MM') = TO_CHAR(cal_start, 'MM') OR TO_CHAR(add_months(?,0), 'MM') = TO_CHAR(cal_end, 'MM'));\r\n";
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
-
-			if(rs.next()) {
-				int employeeId = rs.getInt("employee_id");
-				int calRevealed = rs.getInt("cal_revealed");
-				int calType = rs.getInt("cal_type");
-				String calCnt = rs.getString("cal_cnt");
-				Date calStart = rs.getDate("cal_start");
-				Date calEnd = rs.getDate("cal_end");
+			
+			while(rs.next()) {
+				
+				calendars.add(new Calendar(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDate(5), rs.getDate(6)));
 			}
 		} catch (SQLException e) {
 			throw new SelectException();
@@ -79,7 +77,7 @@ public class CalendarOracleRepository implements CalendarRepository {
 	}
 
 	@Override
-	public List<Calendar> selectCalByDepartmentId(Calendar calendar) throws SelectException {
+	public List<Calendar> selectCalByDepartmentId(Date Month, int employeeId, int MonthButton) throws SelectException {
 
 		List<Calendar> calendars = new ArrayList<Calendar>();
 		Connection con = null;
@@ -95,13 +93,8 @@ public class CalendarOracleRepository implements CalendarRepository {
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				int employeeId = rs.getInt("employee_id");
-				int calRevealed = rs.getInt("cal_revealed");
-				int calType = rs.getInt("cal_type");
-				String calCnt = rs.getString("cal_cnt");
-				Date calStart = rs.getDate("cal_start");
-				Date calEnd = rs.getDate("cal_end");
+			while(rs.next()) {
+				calendars.add(new Calendar(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getDate(5), rs.getDate(6)));
 			}
 			
 		} catch (SQLException e) {
