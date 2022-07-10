@@ -20,15 +20,15 @@ public class NoticeOracleRepository implements NoticeRepository {
 		List<Notice> notices = new ArrayList<Notice>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-	    ResultSet rs = null;
+	    	ResultSet rs = null;
 
 	    String selectSQL = "select * from notice n\r\n"
 	    		+ "join employee e on (e.employee_id = n.employee_id)\r\n"
 	    		+ "where rownum between ? AND ? ";
 		
 	    try { 
-				con = MyConnection.getConnection();	
-				pstmt = con.prepareStatement(selectSQL);
+			    con = MyConnection.getConnection();	
+			    pstmt = con.prepareStatement(selectSQL);
 			    pstmt.setInt(1, startRow);
 			    pstmt.setInt(2, endRow);
 			    rs = pstmt.executeQuery();
@@ -36,7 +36,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 				while(rs.next()== true)  {
 					Notice notice = new Notice();
 					Employee employee = new Employee();
-			        notice.setNoticeId(rs.getInt("notice_id"));
+			     		notice.setNoticeId(rs.getInt("notice_id"));
 					employee.setEmployeeId(rs.getInt("employee_id"));
 					notice.setEmployee(employee);
 					notice.setNoticeCnt(rs.getString("notice_cnt"));
