@@ -7,6 +7,13 @@ public class HolidayType {
 	public HolidayType() {
 		
 	}
+	///////////////////////////////////
+	public HolidayType(int holidayType, String holidayTypeName) {
+			super();
+			this.holidayType = holidayType;
+			this.holidayTypeName = holidayTypeName;
+	}
+	////////////////////////////////////
 
 	public int getHolidayType() {
 		return holidayType;
