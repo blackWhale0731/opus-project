@@ -27,8 +27,13 @@ public class CaltypeOracleRepository implements CaltypeRepository {
 			String selectSQL = "SELECT cal_type, cal_type_name FROM cal_type";
 			pstmt = con.prepareStatement(selectSQL);
 			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int calType = rs.getInt("cal_type");
+				String calTypeName = rs.getString("cal_type_name");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new SelectException();
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
