@@ -133,7 +133,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 					int employeeId = rs.getInt("employee_id");
 					String noticeCnt = rs.getString("notice_cnt");
 					String noticeTitle = rs.getString("notice_title");
-					Date noticeTime = rs.getDate("notice_time");
+					java.sql.Date noticeTime = rs.getDate("notice_time");
 			    
 			    Notice n = new Notice(noticeId, employeeId, noticeCnt, noticeTitle, noticeTime);
 			
