@@ -58,15 +58,18 @@ public class CalendarOracleRepository implements CalendarRepository {
 					+ "where employee_id = ?\r\n"
 					+ "AND (TO_CHAR(add_months(?, ?), 'MM') = TO_CHAR(cal_start, 'MM') OR TO_CHAR(add_months(?,0), 'MM') = TO_CHAR(cal_end, 'MM'));\r\n";
 			pstmt = con.prepareStatement(selectSQL);
-			pstmt.setInt(1, calendar.getEmployee().getEmployeeId());
-			pstmt.setInt(2, calendar.getCalRevealed());
-			pstmt.setInt(3, calendar.getCalType().getCalType());
-			pstmt.setString(4, calendar.getCalCnt());
-			pstmt.setDate(5, new java.sql.Date(calendar.getCalStart().getTime()));
-			pstmt.setDate(6, new java.sql.Date(calendar.getCalEnd().getTime()));
 			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				int employeeId = rs.getInt("employee_id");
+				int calRevealed = rs.getInt("cal_revealed");
+				int calType = rs.getInt("cal_type");
+				String calCnt = rs.getString("cal_cnt");
+				Date calStart = rs.getDate("cal_start");
+				Date calEnd = rs.getDate("cal_end");
+			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new SelectException();
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
@@ -90,16 +93,19 @@ public class CalendarOracleRepository implements CalendarRepository {
 					+ "AND(TO_CHAR(add_months(?, 0), 'MM') = TO_CHAR(cal_start, 'MM') OR\r\n"
 					+ "TO_CHAR(add_months(?, 0), 'MM') = TO_CHAR(cal_end, 'MM'));\r\n";
 			pstmt = con.prepareStatement(selectSQL);
-			pstmt.setInt(1, calendar.getEmployee().getEmployeeId());
-			pstmt.setInt(2, calendar.getCalRevealed());
-			pstmt.setInt(3, calendar.getCalType().getCalType());
-			pstmt.setString(4, calendar.getCalCnt());
-			pstmt.setDate(5, new java.sql.Date(calendar.getCalStart().getTime()));
-			pstmt.setDate(6, new java.sql.Date(calendar.getCalEnd().getTime()));
-			
 			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int employeeId = rs.getInt("employee_id");
+				int calRevealed = rs.getInt("cal_revealed");
+				int calType = rs.getInt("cal_type");
+				String calCnt = rs.getString("cal_cnt");
+				Date calStart = rs.getDate("cal_start");
+				Date calEnd = rs.getDate("cal_end");
+			}
+			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new SelectException();
 		} catch (Exception e){
 			e.printStackTrace();
 		} finally {
