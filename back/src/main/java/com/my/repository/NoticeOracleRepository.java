@@ -64,7 +64,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 	    String selectSQL = "SELECT * FROM(\r\n"
 	    		+ "    SELECT rownum as rn, n.notice_id, n.notice_title,n.notice_time,e.employee_name_kr\r\n"
 	    		+ "        FROM notice n join employee e on(n.employee_id=e.employee_id)\r\n"
-	    		+ "        WHERE notice_title like '%[검색된 값]%'\r\n"
+	    		+ "        WHERE notice_title like '%?%'\r\n"
 	    		+ "        ORDER BY notice_id DESC\r\n"
 	    		+ "        )\r\n"
 	    		+ "    WHERE rn BETWEEN ? AND ?";
