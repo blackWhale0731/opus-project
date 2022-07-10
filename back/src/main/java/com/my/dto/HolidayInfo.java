@@ -5,8 +5,14 @@ public class HolidayInfo {
 	private int holidayTotal;
 	private int holidayUsing;
 	////////////////////////
-	public HolidayInfo(int employeeId){
+	public HolidayInfo() {
+		
+	}
+	public HolidayInfo(int employeeId, int holidayTotal, int holidayUsing) {
+		super();
 		this.employeeId = employeeId;
+		this.holidayTotal = holidayTotal;
+		this.holidayUsing = holidayUsing;
 	}
 //	public void print() {
 //		System.out.println("생성 = "+holidayTotal+"/ 잔여"+(holidayTotal-holidayUsing));
