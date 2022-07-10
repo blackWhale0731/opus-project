@@ -14,7 +14,23 @@ public class HolidayRequest {
 	private HolidayType holidayType;
 	private Employee employee;
 	
-	
+
+	public HolidayRequest(int holidayNumber, int holidayApprovalStatus, ApprovalLevel holidayApprovalFirst,
+			ApprovalLevel holidayApprovalSecond, ApprovalLevel holidayApprovalThird, String holidayDesc,
+			Date holidayStart, Date holidayEnd, HolidayType holidayType) {
+		super();
+		this.holidayNumber = holidayNumber;
+		this.holidayApprovalStatus = holidayApprovalStatus;
+		this.holidayApprovalFirst = holidayApprovalFirst;
+		this.holidayApprovalSecond = holidayApprovalSecond;
+		this.holidayApprovalThird = holidayApprovalThird;
+		this.holidayDesc = holidayDesc;
+		this.holidayStart = holidayStart;
+		this.holidayEnd = holidayEnd;
+		this.holidayType = holidayType;
+	}
+
+
 	public HolidayRequest() {
 		
 	}
