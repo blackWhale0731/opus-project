@@ -14,7 +14,7 @@ public interface NoticeRepository {
 	 * @return
 	 * @throws SelectException
 	 */
-	public List<Notice> selectNoticeId(int startRow, int endRow) throws SelectException;
+	public List<Notice> selectNoticesByWritingtime(int startRow, int endRow) throws SelectException;
 	
 	/**
 	 * 공지제목에 검색어로 포함한 공지사항들을 반환한다
