@@ -20,7 +20,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 		List<Notice> notices = new ArrayList<Notice>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-	    ResultSet rs = null;
+	    	ResultSet rs = null;
 
 	    String selectSQL = "select * from notice n\r\n"
 	    		+ "join employee e on (e.employee_id = n.employee_id)\r\n"
@@ -29,14 +29,14 @@ public class NoticeOracleRepository implements NoticeRepository {
 	    try { 
 				con = MyConnection.getConnection();	
 				pstmt = con.prepareStatement(selectSQL);
-			    pstmt.setInt(1, startRow);
-			    pstmt.setInt(2, endRow);
-			    rs = pstmt.executeQuery();
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				rs = pstmt.executeQuery();
 			    
 				while(rs.next()== true)  {
 					Notice notice = new Notice();
 					Employee employee = new Employee();
-			        notice.setNoticeId(rs.getInt("notice_id"));
+			        	notice.setNoticeId(rs.getInt("notice_id"));
 					employee.setEmployeeId(rs.getInt("employee_id"));
 					notice.setEmployee(employee);
 					notice.setNoticeCnt(rs.getString("notice_cnt"));
@@ -64,7 +64,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 		List<Notice> notices = new ArrayList<Notice>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
-	    ResultSet rs = null;
+	   	ResultSet rs = null;
 
 	    String selectSQL = "SELECT * FROM(\r\n"
 	    		+ "    SELECT rownum as rn, n.notice_id, n.notice_title,n.notice_time,e.employee_name_kr\r\n"
@@ -75,8 +75,8 @@ public class NoticeOracleRepository implements NoticeRepository {
 	    		+ "    WHERE rn BETWEEN ? AND ? ";
 
 		try { 
-				con = MyConnection.getConnection();
-				pstmt = con.prepareStatement(selectSQL);
+			    con = MyConnection.getConnection();
+			    pstmt = con.prepareStatement(selectSQL);
 			    pstmt.setInt(1, startRow);
 			    pstmt.setInt(2, endRow);
 			    pstmt.setString(3, noticeTitle);
@@ -85,7 +85,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 			    while(rs.next())  {
 					Notice notice = new Notice();
 					Employee employee = new Employee();
-			        notice.setNoticeId(rs.getInt("notice_id"));
+			        	notice.setNoticeId(rs.getInt("notice_id"));
 					employee.setEmployeeId(rs.getInt("employee_id"));
 					notice.setEmployee(employee);
 					notice.setNoticeCnt(rs.getString("notice_cnt"));
@@ -109,7 +109,7 @@ public class NoticeOracleRepository implements NoticeRepository {
 	public Notice selectByNoticeId(int noticeId) throws SelectException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-	    ResultSet rs = null;
+	    	ResultSet rs = null;
 	    
 	    String selectSQL = "SELECT *\r\n"
 	    		+ "FROM (\r\n"
@@ -123,8 +123,8 @@ public class NoticeOracleRepository implements NoticeRepository {
 	    		+ "WHERE rn BETWEEN ? AND ? ";
 
 		try { 
-				con = MyConnection.getConnection();
-				pstmt = con.prepareStatement(selectSQL);
+			    con = MyConnection.getConnection();
+			    pstmt = con.prepareStatement(selectSQL);
 			    pstmt.setInt(1, noticeId);
 			    pstmt.executeQuery();
 			    
