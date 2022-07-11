@@ -9,9 +9,28 @@ public class Notice {
 	private Date noticeTime;	//java.util.date 권장
 	private Employee employee;
 	
-	public Notice() {
+	
+	public Notice() {}
 		
+	public Notice(int noticeId, int employeeId, String noticeCnt, 
+			String noticeTitle, Date noticeTime, Employee employee) {
+		super();
+		this.noticeId = noticeId;
+		this.employee = employee;
+		this.noticeCnt = noticeCnt;
+		this.noticeTitle = noticeTitle;
+		this.noticeTime = noticeTime;
 	}
+
+	public Notice(int noticeId, int employeeId, String noticeCnt,
+			String noticeTitle, Date noticeTime) { //?? 두개의 케이스 어떤원리?
+		super();
+		this.noticeId = noticeId;
+		this.noticeCnt = noticeCnt;
+		this.noticeTitle = noticeTitle;
+		this.noticeTime = noticeTime;
+	}
+	
 
 	public int getNoticeId() {
 		return noticeId;

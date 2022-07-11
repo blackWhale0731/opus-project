@@ -4,9 +4,26 @@ public class HolidayInfo {
 	private int employeeId;
 	private int holidayTotal;
 	private int holidayUsing;
-	
-	
-	
+	////////////////////////
+	public HolidayInfo() {
+		
+	}
+	public HolidayInfo(int employeeId, int holidayTotal, int holidayUsing) {
+		super();
+		this.employeeId = employeeId;
+		this.holidayTotal = holidayTotal;
+		this.holidayUsing = holidayUsing;
+	}
+//	public void print() {
+//		System.out.println("생성 = "+holidayTotal+"/ 잔여"+(holidayTotal-holidayUsing));
+//	}
+//	public int holiday() {
+//		return holidayTotal + holidayUsing;
+//	}
+	public String toString() {
+		return "생성 = "+holidayTotal+"/ 잔여"+(holidayTotal-holidayUsing);
+	}
+	///////////////////////
 	public int getEmployeeId() {
 		return employeeId;
 	}
