@@ -9,28 +9,29 @@ public class Notice {
 	private Date noticeTime;	//java.util.date 권장
 	private Employee employee;
 	
-	
 	public Notice() {}
-		
-	public Notice(int noticeId, int employeeId, String noticeCnt, 
-			String noticeTitle, Date noticeTime, Employee employee) {
+	
+	
+
+	public Notice(int noticeId, String noticeCnt, String noticeTitle, Date noticeTime, Employee employee) {
 		super();
 		this.noticeId = noticeId;
-		this.employee = employee;
 		this.noticeCnt = noticeCnt;
 		this.noticeTitle = noticeTitle;
 		this.noticeTime = noticeTime;
+		this.employee = employee;
 	}
 
-	public Notice(int noticeId, int employeeId, String noticeCnt,
-			String noticeTitle, Date noticeTime) { //?? 두개의 케이스 어떤원리?
+	
+
+	public Notice(int noticeId, String noticeCnt, String noticeTitle) {
 		super();
 		this.noticeId = noticeId;
 		this.noticeCnt = noticeCnt;
 		this.noticeTitle = noticeTitle;
-		this.noticeTime = noticeTime;
-	}
 	
+	}
+
 
 	public int getNoticeId() {
 		return noticeId;
@@ -71,7 +72,12 @@ public class Notice {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Notice [noticeId=" + noticeId + ", noticeCnt=" + noticeCnt + ", noticeTitle=" + noticeTitle
+				+ ", noticeTime=" + noticeTime + ", employee=" + employee + "]";
+	}
 	
 	
 	
