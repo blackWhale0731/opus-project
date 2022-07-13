@@ -30,11 +30,8 @@ public class MainNoticeServlet extends HttpServlet {
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		//1. 요청 전달데이터 얻기
-//		String start_row = request.getParameter("start_row");
-//		String end_row = request.getParameter("end_row");
 		
-		//2. DB
+		// DB
 		NoticeRepository repository = new NoticeOracleRepository();
 		List<Notice> notices;
 		ObjectMapper mapper = new ObjectMapper();
