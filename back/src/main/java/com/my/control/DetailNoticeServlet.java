@@ -34,11 +34,8 @@ public class DetailNoticeServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String result = "";
 		
-		//1. 요청전달데이터 얻기
-//				int notice_id = request.getParameter("notice_id");
 				
-				
-				//2. DB
+				// DB
 				NoticeRepository repository = new NoticeOracleRepository();
 				try {
 				Notice n = repository.selectByNoticeId(1);
