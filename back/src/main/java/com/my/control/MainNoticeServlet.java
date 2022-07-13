@@ -49,22 +49,7 @@ public class MainNoticeServlet extends HttpServlet {
 		
 		String result = mapper.writeValueAsString(map);
 		System.out.println(result);
-//		String result = "[";
-//		for(int i=0; i<notices.size(); i++) {
-//			if(i > 0) {
-//			           result +=",";
-//			}
-//			Notice n = notices.get(i);
-//			Employee em = new Employee();
-//			result += "{";
-//			result += "\"notice_id\":"; result += "\"" + n.getNoticeId()  + "\""; result +=",";
-//			result += "\"employee_id\":"; result += "\"" + em.getEmployeeId()  + "\""; result +=",";	
-////			result += "\"notice_cnt\":"; result += "\"" + n.getNoticeCnt()  + "\""; result +=",";	
-//			result += "\"notice_title \":"; result += "\"" + n.getNoticeTitle()  + "\""; result +=",";	
-//			result += "\"notice_time\":"; result += n.getNoticeTime(); 
-//			result += "}";
-//		}
-//		result += "]";
+
 		out.print(result);
 	}
 	
