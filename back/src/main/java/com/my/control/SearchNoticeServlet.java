@@ -30,11 +30,7 @@ public class SearchNoticeServlet extends HttpServlet {
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		//1. 요청 전달데이터 얻기
-//		String start_row = request.getParameter("start_row");
-//		String end_row = request.getParameter("end_row");
-		
-		//2. DB
+		//DB
 		NoticeRepository repository = new NoticeOracleRepository();
 		List<Notice> notices;
 		ObjectMapper mapper = new ObjectMapper();
@@ -52,25 +48,7 @@ public class SearchNoticeServlet extends HttpServlet {
 		
 		String result = mapper.writeValueAsString(map);
 		System.out.println(result);
-//		String result = "[";
-//		for(int i=0; i<notices.size(); i++) {
-//			if(i > 0) {
-//			           result +=",";
-//			}
-//			Notice n = notices.get(i);
-//			Employee em = new Employee();
-//			result += "{";
-//			result += "\"notice_id\":"; result += "\"" + n.getNoticeId()  + "\""; result +=",";
-//			result += "\"employee_id\":"; result += "\"" + em.getEmployeeId()  + "\""; result +=",";	
-////			result += "\"notice_cnt\":"; result += "\"" + n.getNoticeCnt()  + "\""; result +=",";	
-//			result += "\"notice_title \":"; result += "\"" + n.getNoticeTitle()  + "\""; result +=",";	
-//			result += "\"notice_time\":"; result += n.getNoticeTime(); 
-//			result += "}";
-//		}
-//		result += "]";
+
 		out.print(result);
 	}
-	
-	
-	
 	}
