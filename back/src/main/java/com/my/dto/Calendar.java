@@ -18,6 +18,34 @@ public class Calendar {
 		
 	}
 
+
+	public Calendar(Employee employee, int calRevealed,  CalType CalType, String calCnt, Date calStart, Date calEnd 
+			) {
+		super();
+		
+		this.employee = employee;
+		this.calRevealed = calRevealed;
+		this.calCnt = calCnt;
+		this.calStart = calStart;
+		this.calEnd = calEnd;
+		this.CalType = CalType;
+	}
+
+
+
+
+//	public Calendar(int calRevealed, String calCnt, Date calStart, Date calEnd, com.my.dto.CalType calType,
+//			Employee employee) {
+//		super();
+//		this.calRevealed = calRevealed;
+//		this.calCnt = calCnt;
+//		this.calStart = calStart;
+//		this.calEnd = calEnd;
+//		CalType = calType;
+//		this.employee = employee;
+//	}
+
+
 	public int getCalNo() {
 		return calNo;
 	}
