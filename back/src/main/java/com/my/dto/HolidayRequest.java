@@ -13,6 +13,7 @@ public class HolidayRequest {
 	private Date holidayEnd;
 	private HolidayType holidayType;
 	private Employee employee;
+
 	
 
 	public HolidayRequest(int holidayNumber, int holidayApprovalStatus, ApprovalLevel holidayApprovalFirst,
@@ -134,6 +135,8 @@ public class HolidayRequest {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
+
 
 
 	
