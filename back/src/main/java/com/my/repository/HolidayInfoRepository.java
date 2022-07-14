@@ -19,6 +19,14 @@ public interface HolidayInfoRepository {
 	 * @throws UpdateException
 	 */
 	
-	public void update(int employeeId) throws UpdateException;
+	//public void update(int employeeId) throws UpdateException;
+
+	/**
+	 *  사원 휴가일수를 변경한다
+	 * @param employeeId 사번
+	 * @param holidayNum 휴가일수
+	 * @return
+	 */
+	public HolidayInfo updateHolidayInfoByEmployeeId(int employeeId, int holidayNum) throws SelectException, UpdateException;
 
 }

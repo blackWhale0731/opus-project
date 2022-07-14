@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.my.dto.ApprovalLevel;
+import com.my.dto.Department;
+import com.my.dto.Employee;
 import com.my.exception.SelectException;
 import com.my.sql.MyConnection;
-import DefinePackage.DefineOption;
+//import DefinePackage.DefineOption;
 
 public class ApprovalLevelOracleRepository implements ApprovalLevelRepository {
 
@@ -40,11 +42,34 @@ public class ApprovalLevelOracleRepository implements ApprovalLevelRepository {
 				String employeeGender = rs.getString("employee_gender");
 				java.sql.Date employeeBirthday = rs.getDate("employee_birthday");
 				int employeeResign = rs.getInt("employee_resign");
-				int employeeAuthority = rs.getInt("employee_authority");
-
+				int noticeAuthority = rs.getInt("notice_authority");
+				Employee e = new Employee();
 				// employee 값들 받을 것
-//				ApprovalLevel approval_level = new ApprovalLevel(id);
-//				approvalLevels.add(approval_level);
+				int employeeId = rs.getInt("employee_id");
+				e.setEmployeeId(employeeId);
+				
+				Department d = new Department();
+				d.setDepartmentId(departmentId);
+				e.setDepartment(d);
+				
+				e.setEmployeePassword(employeePassword);
+				e.setEmployeeNameKr(employeeNameKr);
+				e.setEmployeeNameEng(employeeNameEng);
+				e.setEmployeeHiredate(employeeHiredate);
+//				e.setEmployeePhonenumber(employeePhonenumber);
+				e.setEmployeeEmail(employeeEmail);
+				e.setEmployeeAddress(employeeAddress);
+//				e.setEmployeeGender(employeeGender);
+				e.setEmployeeBirthday(employeeBirthday);
+//				e.EmployeeResign(employeeResign);
+//				e.NoticeAuthority(noticeAuthority);
+				
+				// 몇몇 값이 받아지지 않는데 여기서 필요한 employee값은 이름 뿐이므로 넘어간다
+
+				
+//				ApprovalLevel approval_level = new ApprovalLevel(employeeId);
+				ApprovalLevel approval_level = new ApprovalLevel(e);
+				approvalLevels.add(approval_level);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
