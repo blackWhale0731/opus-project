@@ -34,11 +34,15 @@ public interface HolidayRequestRepository {
 	 */
 	public List<HolidayRequest> selectHolidayByEmployeeId(int startRow,int endRow, int employeeId) throws SelectException;
 
+	HolidayRequest selectHolidayRequestByHolidayNumber(int holidayNumber, int employeeId)
+			throws UpdateException, SelectException;
+
 	/**
 	 * 휴가요청을 요청취소하면 승인상태를 업데이트한다
 	 * @param holidayNumber 휴가신청번호
 	 * @throws UpdateException
 	 */
-	public void update(int holidayNumber) throws UpdateException;
+	public void update(int holidayNumber, int employeeId) throws UpdateException;
+
 
 }
