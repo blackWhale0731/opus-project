@@ -28,8 +28,8 @@ public class ViewCalendarServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		//로그인된 ID얻기
-		int loginedId = new Integer(request.getParameter("loginInfo"));
-//		int logiendId = 220702;
+//		int loginedId = new Integer(request.getParameter("loginInfo"));
+		int loginedId = 220702;
 		
 		//요청전달데이터 calYM이 2022-07
 		String calYM = request.getParameter("calYM");
@@ -45,15 +45,15 @@ public class ViewCalendarServlet extends HttpServlet {
 				//.equals("employee"))
 				if(revealedArr.length == 2) { //개인, 부서 둘다선택된 경우
 					
-					list = repository.selectCalBoth(calYM,logiendId);
+					list = repository.selectCalBoth(calYM,loginedId);
 				}else {
 					switch(revealedArr[0]) {
 					case "employee":
-						list = repository.selectCalMyExcludeDept(calYM, logiendId);
+						list = repository.selectCalMyExcludeDept(calYM, loginedId);
 						
 						break;
 					case "department":
-						list = repository.selectCalDeptExcludeMy(calYM, logiendId);
+						list = repository.selectCalDeptExcludeMy(calYM, loginedId);
 						break;
 					}
 				}
