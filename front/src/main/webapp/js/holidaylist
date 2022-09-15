@@ -1,0 +1,62 @@
+$(function(){
+    //요청전달데이터 
+    let queryString = location.search.substring(1);//백엔드의 요청전달데이터로 활용
+
+    $.ajax({
+        url: "/back/holidaylist",
+        method:'post',
+        // data: 'prod_no=' +'C0001',
+        data :  queryString,
+        success: function(jsonObj){
+            if(jsonObj.status == 1){
+            console.log(jsonObj);//{status:, em:{} }
+            //for(var cnt=0; cnt<jsonObj.holidayrequests.length;cnt++){
+            $(jsonObj.holidayrequests).each(function(index, element){             
+              let holidaystart = element.holidayStart;
+              //let convert_holiday_start = new Date(holidaystart);
+            //   convert_holiday_start = convert_holiday_start.toLocaleDateString();
+              let holidayend = element.holidayEnd;
+            //   let convert_holiday_end = new Date(holidayend);
+            //   convert_holiday_end = convert_holiday_end.toLocaleDateString();
+              let holidaytypename = element.holidayType.holidayTypeName;
+              let holidaydesc = element.holidayDesc;
+              let holidayapprovalstatus = element.holiday_approvalStatus;
+              console.log(holidaytypename);
+              
+              $('span.startday').eq(index).html(holidaystart);
+              $('span.endday').eq(index).html(holidayend);
+              $('span.holitype').eq(index).html(holidaytypename);
+              $('span.desc').eq(index).html(holidaydesc);
+              $('span.status').eq(index).html(holidayapprovalstatus);
+              $('span.cancle').eq(index).html(holidayapprovalstatus);
+            });
+            }else{
+                alert(jsonObj.msg);
+            }
+        },
+        error: function(jqXHR){
+            alert('오류:'+ jqXHR.status);
+        }
+    });
+
+  //   --모달창 START--
+//   $('span.holitype').click(function(){
+//     let holiday_type = $('span.holitype').html();
+//     // let quantity= $('div.viewproduct ul>li>input[name=quantity]').val();
+//     alert( +"quantity:" + quantity);
+    
+//     $.ajax({
+//       url: '/back/holidaydetail',
+//       method: 'post',
+//       data: {holidaystart:holidaystart, holidayend:holidayend},
+//       success:function(){
+//         $('div.viewproduct div.result').show();  
+//       },
+//       error: function(jqXHR){
+//         alert('오류:'+ jqXHR.status);
+//       }
+//     });
+//     return false;
+//   });
+  // //--모달창 END--
+});
