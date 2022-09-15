@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>holidayrequest</title>
+  <!-- <link rel="stylesheet" href="../css/holidayrequest.css">
+  <link rel="stylesheet" href="../css/holidaylist.css"> -->
+  <link rel="stylesheet" href="../css/layout.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="../jq/holidaylistc.js"></script>
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+      <h1>OPUS</h1>
+    </header>
+    <aside id="sidebar">
+      <h1>
+        <clock></clock>
+      </h1>
+      <button type="button" onClick="location.href='login.html'">Logout</button><br>
+      <br>
+      <br>
+      <h3><a href="mainpage.html" text-align:center>홈</a></h3>
+      <h3><a href="calendar.html">근로관리</a></h3>
+      <h3>휴가요청</h3>
+      <h5><a href="holidayrequest.html">&nbsp;&nbsp;신청</a></h5>
+      <h5><a href="holidaylist.html">&nbsp;&nbsp;관리</a></h5>
+      <h3><a href="mypage.html">My Page</a></h3>
+    </aside>
+    <section id="contents">
+      <h1>휴가요청[신청]</h1>
+      <table class="request" width="100%" height="85%">
+        <tr><td>*</td><td>유형</td><td></td><td>
+          <div class="select">    
+            <select class="holiday">
+             <option>휴가유형</option>
+            </select>
+          </div>
+        </td></tr>
+        <tr><td>*</td><td>일시</td><td></td><td><input type="date">&nbsp;&nbsp;<input type="date"></td>
+          <td>
+            <input type="submit" value="기안하기" class="drafting"
+            onclick="if(!confirm('한번 기안한 내용은 수정할 수 없습니다.\n기안하시겠습니까?'))
+            {return false;}location.href='mainpage.html'"/>
+          </td></tr>
+        <tr><td></td><td>현황</td><td></td>
+          <td>
+            <!-- <input type="text" class="yourholiday" size="50" readonly> -->
+            <span class="yourholiday"></span>
+          </td></tr>
+        <tr><td></td><td>사유</td><td></td><td><textarea name="reason" rows="5" cols="80"></textarea></td></tr>
+        <tr><td></td><td>별첨</td><td></td><td><input type="file"></td></tr>
+        <tr><td></td><td>결재자</td><td>*</td><td>
+          <select class="approvalname1">
+            <option>1차결재자</option>
+          </select></td></tr>
+        <tr><td></td><td></td><td></td><td>
+          <select  class="approvalname2">
+            <option values="0">2차결재자</option>
+          </select></td></tr>
+        <tr><td></td><td></td><td></td><td>
+          <select  class="approvalname3">
+            <option values="3">3차결재자</option>
+          </select></td></tr>
+      </table>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../jq/calendar.js"></script>
+    </section>
+    <footer id="footer">
+      <h2>푸터</h2>
+    <footer>
+  </div>
+</body>
+</html>
