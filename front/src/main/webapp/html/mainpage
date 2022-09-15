@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/mainpage.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+            <h2>OPUS</h2>
+        </header>
+        <aside id="sidebar">
+            <div>
+                <button type="button">Logout</button><br />
+                <h3><a href="mainpage.html" text-align:center>홈</a></h3>
+                <h3><a href="calendar.html">근로관리</a></h3>
+                <h3>휴가요청</h3>
+                <h5><a href="holidayrequest.html">&nbsp;&nbsp;신청</a></h5>
+                <h5><a href="holidaylist.html">&nbsp;&nbsp;관리</a></h5>
+                <h3><a href="mypage.html">My Page</a></h3>
+            </div>
+        </aside>
+        <section id="contents">
+            <div id="notice_box" name="notice_box">
+                <h3><a href="viewnotice.html">공지사항</a></h3>
+                <div id="noticelist"></div>
+            </div>
+
+            </div>
+        </section>
+        <footer id="footer">
+            <h2>푸터</h2>
+            <footer>
+    </div>
+    </form>
+</body>
+
+</html>
