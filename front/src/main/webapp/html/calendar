@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <!-- API FILE -->
+  <link href="../fullcalendar/main.css" rel="stylesheet" />
+  <link href='../fullcalendar/main.min.css' rel='stylesheet' />
+  <script src='../fullcalendar/main.min.js'></script>
+  <script src='../fullcalendar/main.js'></script>
+
+  <!-- 추가 CSS -->
+  <link href="../css/layout.css" rel="stylesheet" >
+  <link href="../css/calendar.css" rel="stylesheet">
+
+  <!-- 추가 JS -->
+  <script src='../jq/calendar.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  
+  <!-- <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: [ // 일정 데이터 추가 , DB의 event를 가져오려면 JSON 형식으로 변환해 events에 넣어주면된다.
+          {
+            title: '일정',
+            start: '2021-05-26',
+            end: '2021-05-27'
+          }
+        ]
+      });
+      calendar.render();
+    });
+
+  </script> -->
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+      <h1>OPUS</h1>
+    </header>
+    <aside id="sidebar">
+      <h1>
+        <clock></clock>
+      </h1>
+      <button type="button" onClick="location.href='login.html'">Logout</button><br>
+      <br>
+      <br>
+      <h3><a href="mainnotice.html">홈</a></h3>
+      <h3><a href="calendar.html">근로관리</a></h3>
+      <h3>휴가요청</h3>
+      <h5><a href="holidayrequest.html">&nbsp;&nbsp;신청</a></h5>
+      <h5><a href="holidaydetail.html">&nbsp;&nbsp;관리</a></h5>
+      <h3><a href="mypage.html">My Page</a></h3>
+    </aside>
+    <section id="contents">
+      <form id="newScheduleForm" name="newScheduleForm">
+
+        <table id="newScheduleTable">
+          <tbody>
+            <tr>
+              <th scope="row">유형</th>
+              <td>
+                <select>
+                  <option value="cal_type">휴가</option>
+				  <option value="cal_type">출장</option>
+				  <option value="cal_type">회의</option>
+				  <option value="cal_type">외근</option>
+				  <option value="cal_type">세미나</option>
+				  <option value="cal_type">기타</option>
+                </select>
+              </td>
+              <th scope="row">다른 부서원들과 일정 공유</th>
+              <td ><input type="checkbox"></td>
+
+            </tr>
+            <tr>
+              <th scope="row">시작일</th>
+              <td ><input type="date" id="startDate" name="startDate" style="width:80px; HEIGHT:17.6px"></td>
+              <th scope="row">종료일</th>
+              <td><input type="date" id="endDate" name="endDate" style="width:80px; HEIGHT:17.6px"></td>
+            </tr>
+            <tr>
+
+
+              <th scope="row">상세정보</th>
+              <td><input type="text" id="scheduleContent" name="scheduleContent" size=70
+                  style="width:178.4px; HEIGHT:17.6px"></td>
+              <td id="scheduleButtonTd">
+                <button type="button" class="search" id="addScheduleButton"
+                  style="width:80px; HEIGHT:17.6px">생성</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+      <br>
+      <div id='calendar'></div>
+    </section>
+    <footer id="footer">
+      
+    </footer>
+  </div>
+</body>
+
+</html>
