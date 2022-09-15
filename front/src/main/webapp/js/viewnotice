@@ -1,0 +1,54 @@
+//공지사항 리스트가져오기
+$(function() {
+  //정보 가져오기
+  $.ajax({
+      url: "http://localhost:8888/back/viewnotice",
+      method: 'post',
+      
+      success: function(jsonObj) {
+              //--리스트 START--
+              let noticesArr = jsonObj.notices;
+              let $listObj = $('div.noticelist');
+              $(noticesArr).each(function(i, element){
+                $copyObj = $listObj.clone();
+
+                let notice_id = element.noticeId;
+                let notice_title = element.noticeTitle;
+                let employee_name_kr = element.employee.employeeNameKr;
+                let notice_time = element.noticeTime;
+                const date = new Date(notice_time);
+                let convert_time = date.toLocaleString();
+
+                // let notice = element.notices.notice;
+
+                let noticeslist = '<div><span class="notice_id">' + notice_id + '</span></div>'
+                noticeslist += '<div><span class="notice_title">' + notice_title + '</span></div>'
+                noticeslist += '<div><span class="employee_name_kr">' + employee_name_kr + '</span></div>'
+                noticeslist += '<div><span class="notice_time">' + convert_time + '</span></div>'
+              
+                $copyObj.find('div.each_notice').html(noticeslist);
+
+                $('div.board_list_wrap').append($copyObj);
+              });	
+            },
+            error: function (jqXHR) {
+              alert('오류:' + jqXHR.status);
+            }
+              })
+
+  });
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
