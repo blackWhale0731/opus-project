@@ -1,0 +1,95 @@
+$(function(){
+  var $selectholiday = $("div.select>select.holiday"); // 되는거
+  $.ajax({
+    url: "/back/holidaytype",
+    method: "POST",
+    success: function (jsonObj) {
+      console.log(jsonObj);
+      if(jsonObj.status==1){
+          console.log(jsonObj.holidayTypes);
+          for (var cnt=0; cnt<jsonObj.holidayTypes.length; cnt++){
+            let holidayTypeName = jsonObj.holidayTypes[cnt].holidayTypeName;
+            console.log(holidayTypeName);
+            var $opt = $('<option>');
+            var txt = holidayTypeName;
+            $opt.append(txt);
+            $selectholiday.append($opt);
+          }
+          console.log($selectholiday);
+          $selectholiday.show();
+          
+      }
+    },
+    error: function (jqXHR) {
+      alert("오류:" + jqXHR.status);
+    }
+  });
+  
+
+  var $selectapproval1 = $("select.approvalname1");
+  var $selectapproval2 = $("select.approvalname2");
+  var $selectapproval3 = $("select.approvalname3");
+  $.ajax({
+    url: "/back/approvallevel",
+    method: "POST",
+    success: function (jsonObj) {
+      console.log(jsonObj);
+      if(jsonObj.status==1){
+          console.log(jsonObj.approvallevels);
+          for (var cnt=0; cnt<jsonObj.approvallevels.length; cnt++){
+            let employeeNameKr = jsonObj.approvallevels[cnt].employee.employeeNameKr;
+            console.log(employeeNameKr);
+            var $opt1 = $('<option>');
+            var $opt2 = $('<option>');
+            var $opt3 = $('<option>');
+            var txt = employeeNameKr;
+            $opt1.append(txt);
+            $opt2.append(txt);
+            $opt3.append(txt);
+            $selectapproval1.append($opt1);
+            $selectapproval2.append($opt2);
+            $selectapproval3.append($opt3);
+          }
+      }
+    },
+    error: function (jqXHR) {
+      alert("오류:" + jqXHR.status);
+    }
+  });
+
+  $.ajax({
+    url: "/back/holidayreturn",
+    method: "POST",
+    success: function (jsonObj) {
+      console.log(jsonObj);
+      if(jsonObj.status==1){
+        console.log(jsonObj.holidayInfo.holidayTotal);
+        console.log(jsonObj.holidayInfo.holidayUsing);
+        let holidayTotal = jsonObj.holidayInfo.holidayTotal;
+        let holidayUsing = jsonObj.holidayInfo.holidayUsing;
+        let myholiday = "생성 = "+holidayTotal+"일 / 잔여 = "+holidayUsing+"일"
+        console.log(myholiday);
+        $('span.yourholiday').html(myholiday);
+      }
+    }
+  });
+
+  //////// 드롭다운 값 받아오기
+  var htype;
+  $selectholiday.click( function(){
+    htype = $(this).val();
+    console.log("test"+htype)
+  });
+  var oneapp;
+  $selectapproval1.click( function(){
+    oneapp = $(this).val();
+  });
+  var twoapp;
+  $selectapproval2.click( function(){
+    twoapp = $(this).val();
+  });
+  var threeapp;
+  $selectapproval3.click( function(){
+    threeapp = $(this).val();
+  });
+});
