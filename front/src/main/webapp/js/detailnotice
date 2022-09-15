@@ -1,0 +1,41 @@
+//공지사항 상세보기
+$(function() {
+    // alert(window.location.search);
+    let queryString = location.search.substring(1);
+    $.ajax({
+        url: "http://localhost:8888/back/detailnotice",
+        method: 'get',
+        data: queryString,
+        
+        success: function(jsonObj){
+            console.log(jsonObj.status);
+            if(jsonObj.status == 1){
+                // let notice_id = jsonObj.n.noticeId;
+                let notice_title = jsonObj.n.noticeTitle;
+                let employee_name_kr = jsonObj.n.employee.employeeNameKr;
+                let notice_time = jsonObj.n.noticeTime;
+                let notice_cnt = jsonObj.n.noticeCnt;
+                const date = new Date(notice_time);
+                let convert_time = date.toLocaleString();
+             
+
+                $('div.board_view_wrap div.notice_title').html(notice_title);
+                $('div.info>dl>dd.employee_name_kr').html(employee_name_kr);
+                $('div.info>dl>dd.notice_time').html(convert_time);
+                $('div.notice_cnt').html(notice_cnt);
+            }else{
+                alert("success:" + jsonObj.msg);
+            }
+        },
+        error: function(jqXHR){ 
+          alert('오류:'+ jqXHR.status);
+        }
+      });
+    });
+
+
+
+
+
+
+
