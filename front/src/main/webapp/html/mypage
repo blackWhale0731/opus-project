@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="mypage.html">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>mypage.html</title>
+		<link rel="stylesheet" href="../css/layout.css">
+		<link rel="stylesheet" href="../css/mypage.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="../jq/mypage.js"></script>
+	</head>
+
+<body>
+	<div id="container">
+		<header id="header">
+			<h1>My Page</h1>
+		</header>
+		<aside id="sidebar">
+			<button type="button" onClick="location.href='login.html'">Logout</button><br>
+			<h3><a href="mainpage.html" text-align:center>홈</a></h3>
+			<h3><a href="calendar.html">근로관리</a></h3>
+			<h3>휴가요청</h3>
+			<h5><a href="holidayrequest.html">&nbsp;&nbsp;신청</a></h5>
+			<h5><a href="holidaydetail.html">&nbsp;&nbsp;관리</a></h5>
+			<h3><a href="mypage.html">My Page</a></h3>
+
+		</aside>
+
+		<!-- 본문 -->
+		<section id="contents">
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_name_kr">이름</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_name_kr"></span>
+					</div>
+					<div class="titleCol">
+						<label for="employee_name_eng">영문명</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_name_eng"></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_birthday">생년월일</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_birthday"></span>
+					</div>
+					<div class="titleCol">
+						<label for="employee_gender">성별</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_gender"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_address">주소</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_address"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_id">사번</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_id"></span>
+					</div>
+					<div class="titleCol">
+						<label for="department_name">부서명</label>
+					</div>
+					<div class="outputCol">
+						<span class="department_name"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_phonenumber">전화번호</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_phonenumber"></span>
+					</div>
+					<div class="titleCol">
+						<label for="employee_hiredate">입사일</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_hiredate"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_email">이메일</label>
+					</div>
+					<div class="outputCol">
+						<span class="employee_email"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="titleCol">
+						<label for="employee_password">비밀번호</label>
+					</div>
+					<div class="outputCol">
+						<input type="password" id="employee_password" name="employee_password" placeholder="8~16자로 입력">
+					</div>
+				</div>
+				<div class="row">
+					<button  onclick="if(confirm('비밀번호를 수정하시겠습니까?'))
+					{return false;}location.href=''">수정</button>
+				</div>
+		</section>
+		<!-- 본문 END -->
+
+		<footer id="footer">
+
+		</footer>
+	</div>
+</body>
+
+</html>
