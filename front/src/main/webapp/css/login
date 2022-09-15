@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+div.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px lightgray;
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+div.login>form {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+
+.row {
+    width: 100%;
+    padding: 5;
+    color: black;
+    display: inline-block;
+}
+
+.titleCol {
+    width: 20%;
+    margin: 10px;
+    display: inline-block;
+}
+
+.inputCol {
+    width: 70%;
+    margin: 2px;
+    display: inline-block;
+}
+
+.inputCol input {
+    width: 95%;
+    height: 20%;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid lightgray;
+    outline: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.row button {
+    width: 60%;
+    height: 30px;
+    left: 50%;
+    margin: auto;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    background-color: #2E3159;
+    color: #F2F2F0;
+    display:block;
+    font-size: 0.8em;
+}
+
+.etc {
+    width: 85%;
+    margin: 2px;
+    text-align: right;
+    display: flex;
+    align-items: end;
+    display: inline-block;
+}
+
+#pwdShow {
+    float: right;
+    font-size: 9px;
+    cursor: pointer;
+    color: grey;
+    display: block;
+    align-items: end;
+}
