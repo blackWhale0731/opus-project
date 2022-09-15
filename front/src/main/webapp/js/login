@@ -1,0 +1,81 @@
+$(function () {
+    //--아이디저장 체크박스
+    // let $cb = $('input[type=checkbox]');
+
+    //로그인버튼
+    let $btLogin = $('div.row>button');
+
+    //--아이디 입력객체찾기
+    let $inputId = $('input[name=employeeId]');
+
+    //localStorage에 idValue이름의 item이 있다면
+    //아이디 입력객체의 value로 설정하기
+    let idValue = localStorage.getItem('employeeId');
+    if (idValue != null && idValue != '') {
+        $inputId.val(idValue);
+    }
+
+    //--로그인 버튼 클릭 START
+    //아이디저장 체크박스가 체크되었다면
+    //사용자가 입력해준 아이디값을 lacalstorage에 저장(이름: id)
+    //아이디저장 체크박스가 체크안되었다면
+    //localstorage의 id이름의 item을 삭제
+
+    $btLogin.click(function () {
+        if ($cb.prop('checked')) {
+            localStorage.setItem("idValue", $inputId.val());
+        } else {
+            localStorage.removeItem('idValue');
+        }
+    });
+    //--로그인버튼 클릭 END
+
+    //비밀번호입력 객체찾기
+    let $inputPwd = $("input[name=employeePassword]");
+
+    //-form 전송 START--
+
+    let $form = $('div.login>form');
+    /*   alert($form.html());*/
+    $form.submit(function () {
+        let url = 'http://localhost:8888/back/login';
+        let inputIdValue, inputPwdValue;
+        inputIdValue = $inputId.val(); //사용자가 입력해준 Id값
+        inputPwdValue = $inputPwd.val(); //사용자가 입력해준 Pwd값
+        // console.log(typeof(inputIdValue));
+        // console.log(typeof(inputPwdValue));
+
+        let data = 'employeeId=' + inputIdValue + '&employeePassword=' + inputPwdValue;
+
+        $.ajax({
+            url: url,
+            method: 'post',
+            data: data,
+
+            success: function (jsonObj) {
+                if (jsonObj.status == 1) {//로그인 성공
+                    alert('로그인 성공');
+                    location.href = 'http://localhost:8888/front/html/mainpage.html';//현재 사용중인 주소로 재요청
+                } else {//로그인 실패
+                    alert('로그인 실패');
+                }
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.status + ":" + jqXHR.statusText);
+            }
+        });
+
+        return false;
+        //---form 전송 END---
+    });
+    $("#pwdShow").on("click", function () {
+        if ($("#employeePassword").attr("type") == "password") {
+            $("#employeePassword").attr("type", "text");
+            $($(this)).text("HIDE");
+        } else {
+            $("#employeePassword").attr("type", "password");
+            $($(this)).text("SHOW");
+        }
+    });
+});
