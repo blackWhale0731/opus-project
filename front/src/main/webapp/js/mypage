@@ -1,0 +1,93 @@
+$(function(){
+    //요청전달데이터 
+    let queryString = location.search.substring(1);//백엔드의 요청전달데이터로 활용
+    $.ajax({
+        url: "/back/viewmypage",
+        method:'post',
+        // data: 'prod_no=' +'C0001',
+        data :  queryString,
+        success: function(jsonObj){
+            if(jsonObj.status == 1){
+            console.log(jsonObj);//{status:, em:{} }
+            let employee_name_kr = jsonObj.em.employeeNameKr;
+            let employee_name_eng = jsonObj.em.employeeNameEng;
+            let employee_gender = jsonObj.em.employeeGender;
+            let employee_address = jsonObj.em.employeeAddress;
+            let employee_id = jsonObj.em.employeeId;
+            let department_name = jsonObj.em.department.departmentName;
+            let employee_phonenumber = jsonObj.em.employeePhonenumber;
+            let employee_email = jsonObj.em.employeeEmail;
+
+            //날짜 형변환
+            let employee_hiredate = jsonObj.em.employeeHiredate;
+			let convert_hiredate = new Date(employee_hiredate);
+
+            convert_hiredate = convert_hiredate.toLocaleDateString();
+            let employee_birthday = jsonObj.em.employeeBirthday;
+            let convert_birthday = new Date(employee_birthday);
+            convert_birthday = convert_birthday.toLocaleDateString();
+           
+            $('div.outputCol span.employee_name_kr').html(employee_name_kr);
+            $('div.outputCol span.employee_name_eng').html(employee_name_eng);
+            $('div.outputCol span.employee_birthday').html(convert_birthday);
+            $('div.outputCol span.employee_gender').html(employee_gender);
+            $('div.outputCol span.employee_address').html(employee_address);
+            $('div.outputCol span.employee_id').html(employee_id);
+            $('div.outputCol span.department_name').html(department_name);
+            $('div.outputCol span.employee_phonenumber').html(employee_phonenumber);
+            $('div.outputCol span.employee_hiredate').html(convert_hiredate);
+            $('div.outputCol span.employee_email').html(employee_email);
+
+
+            }else{
+                alert(jsonObj.msg);
+            }
+
+        },
+        error: function(jqXHR){
+            alert('오류:'+ jqXHR.status);
+        }
+
+    });
+
+    //전달데이터
+    let $inputPwd = $("input[name=employee_password]");
+    let inputPwdValue;
+    // let $inputChkPwd = $("input[name=password_chk]");
+    // let inputChkPwdValue;
+
+    //수정버튼 누르기
+    $('div.row>button').click(function(){
+
+        inputPwdValue = $inputPwd.val(); //사용자가 입력해준 Pwd값
+        inputChkPwdValue = $inputChkPwd.val(); //사용자가 입력해준 ChkPwd값
+        let data = 'employee_password=' + inputPwdValue;    
+       
+
+        if(inputPwdValue.length < 8 || inputPwdValue.length > 16) {
+            message = "비밀번호는 8자리 이상 16자리 이하만 가능합니다.\n비밀번호를 다시 입력하여 주시기 바랍니다.";
+        }
+       
+
+                $.ajax({
+                  url: 'http://localhost:8888/back/updatemypage',
+                  method: 'POST',
+                  data: data,	
+                  success: function(jsonObj) {
+                    if(jsonObj.status == 1){
+                        alert("비밀번호가 수정되었습니다");
+                        location.href = ''; 
+                        
+                    }else{//수정 실패
+                        alert("다시 시도해주세요");
+                    }
+                   },
+                   error: function(jqXHR, textStatus, errorThrown){
+                        alert(jqXHR.status + ":" + jqXHR.statusText);
+                   }
+                });
+               
+                return false; 
+            });
+            
+});
