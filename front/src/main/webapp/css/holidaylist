@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  /* 브라우저 기본 마진 리셋 */
+  padding: 0;
+  /* 브라우저 기본 패딩 리셋 */
+  box-sizing: border-box;
+  /* 테두리까지 포함해서 박스 모델 너비로 계산 */
+}
+
+
+#container {
+  width: 1200px;
+  /* 내용 전체의 너비 */
+  margin: 20px auto;
+  /* 내용을 화면 가운데 배치하도록 좌우 마진을 auto로 */
+}
+
+#header {
+  width: 100%;
+  /* 부모 요소의 너비와 똑같게 */
+  height: 50px;
+  /* 헤더의 높이 */
+  background-color: white;
+}
+
+#sidebar {
+  width: 200px;
+  /* 사이드바의 너비 */
+  height: 700px;
+  /* 사이드바의 높이 */
+  background-color: #2E3159;
+  color: #F2F2F0;
+  float: left;
+  /* 왼쪽으로 플로팅 */
+}
+
+#sidebar a {
+  color: #F2F2F0;
+  text-decoration-line: none;
+}
+
+#sidebar button {
+  display: block;
+  position: relative;
+  width: 120px;
+  padding: 0;
+  margin: 25px 0px 0px 25px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 30px;
+  color: #2E3159;
+  border-radius: 5px;
+  transition: all 0.2s;
+  background-color: #F2F2F0;
+
+}
+
+#contents {
+  width: 950px;
+  /* 본문의 너비 */
+  height: auto;
+  /* 본문의 높이 */
+  background-color: white;
+  float: left;
+  /* 왼쪽으로 플로팅 */
+  padding: 5%;
+}
+
+#footer {
+  width: 100%;
+  /* 부모 요소의 너비와 똑같게  */
+  height: 50px;
+  /* 푸터의 높이 */
+  background-color: white;
+  clear: left;
+  /* 플로팅 해제 */
+}
