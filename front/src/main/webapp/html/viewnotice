@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/viewnotice.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../jq/viewnotice.js"></script>
+</head>
+
+<body>
+  <form method="post" action="http://localhost:8888/back/viewnotice">
+    <div id="container">
+      <header id="header">
+        <h2>OPUS</h2>
+      </header>
+      <aside id="sidebar">
+        <div>
+          <button type="button" onClick="location.href='login.html'">Logout</button><br />
+          <h3><a href="mainpage.html" text-align:center>홈</a></h3>
+          <h3><a href="calendar.html">근로관리</a></h3>
+          <h3>휴가요청</h3>
+          <h5><a href="holidayrequest.html">&nbsp;&nbsp;신청</a></h5>
+          <h5><a href="holidaydetail.html">&nbsp;&nbsp;관리</a></h5>
+          <h3><a href="mypage.html">My Page</a></h3>
+        </div>
+      </aside>
+      <section id="contents">
+        <div class="searchbox">
+          <input type="text" placeholder="제목으로 검색해주세요">
+        </div>
+
+        <div class="board_wrap">
+          <div class="board_title">
+            <strong>공지사항</strong>
+            <p>사내 게시판을 이용해주셔서 감사합니다.</p>
+          </div>
+
+          <div class="board_list_wrap">
+            <div class="board_list">
+              <div class="top">
+                <div class="id">번호</div>
+                <div class="title">제목</div>
+                <div class="name">작성자</div>
+                <div class="time">작성일</div>
+              </div>
+
+              <div class="noticelist">
+                <div class="each_notice"></div>
+                <a href="detailnotice.html?notice_id=1">link</a>
+                <!-- <div class="notice_id"></div>
+                <div class="notice_title"></div>
+                <div class="employee_name_kr"></div>
+                <div class="notice_time"></div> -->
+
+              </div>
+            </div>
+          </div>
+          <div class="board_page">
+            <a href="#" class="bt first"></a>
+            <a href="#" class="bt prev"></a>
+            <a href="#" class="num on">1</a>
+            <a href="#" class="num">2</a>
+            <a href="#" class="num">3</a>
+            <a href="#" class="num">4</a>
+            <a href="#" class="num">5</a>
+            <a href="#" class="bt next"></a>
+            <a href="#" class="bt last"></a>
+          </div>
+          <div class="bt_wrap">
+            <a href="detailnotice.html" class="on">목록</a>
+            <!--<a href="#">수정</a>-->
+          </div>
+        </div>
+    </div>
+
+    </section>
+    <footer id="footer">
+      <h2>푸터</h2>
+      <footer>
+        </div>
+  </form>
+</body>
+
+</html>
