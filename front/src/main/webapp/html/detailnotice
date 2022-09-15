@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/layout.css" />
+    <script src="../jq/detailnotice.js"></script>
+  </head>
+
+<body>
+  <div id="container">
+    <header id="header">
+      <h1>OPUS</h1>
+    </header>
+    <aside id="sidebar">
+      <div>
+        <button type="button" onClick="location.href='login.html'">Logout</button><br />
+        <h3><a href="mainnotice.html" text-align:center>홈</a></h3>
+        <h3><a href="calendar.html">근로관리</a></h3>
+        <h3>휴가요청</h3>
+        <h5><a href="holidayrequest.html">&nbsp;&nbsp;신청</a></h5>
+        <h5><a href="holidaydetail.html">&nbsp;&nbsp;관리</a></h5>
+        <h3><a href="mypage.html">My Page</a></h3>
+    </div>
+    </aside>
+    <section id="contents">
+      <div class="board_wrap">
+        <div class="board_title">
+          <strong>공지사항</strong>
+          <p>사내 게시판을 이용해주셔서 감사합니다.</p>
+        </div>
+        <div class="board_view_wrap">
+          <div class="board_view">
+            <div class="notice_title">제목 : </div>
+            <div class="info">
+              <dl>
+                <dt>작성자 : </dt>
+                <dd class="employee_name_kr"></dd>
+              </dl>
+              <dl>
+                <dt>작성일 : </dt>
+                <dd class="notice_time"></dd>
+              </dl>
+            </div>
+            <div class="notice_cnt">
+            </div>
+          </div>
+          <div class="bt_wrap">
+            <a href="viewnotice.html" class="on">목록</a>
+            <!-- <a href="edit.html">수정</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <h2>푸터</h2>
+    <footer>
+  </div>
+</body>
+</html>
